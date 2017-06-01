@@ -1,5 +1,7 @@
 package dev.paie.service;
 
+import static org.junit.Assert.assertTrue;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -27,19 +29,16 @@ public class GradeServiceJdbcTemplateTest {
 		Grade nouveauGrade2 = new Grade("11",new BigDecimal("500"),new BigDecimal("100"));
 		Grade gradeToModif = new Grade("10",new BigDecimal("5000"),new BigDecimal("1000"));
 		
-		
-		// TODO sauvegarder un nouveau grade
 		this.gradeService.sauvegarder(nouveauGrade1);
 		this.gradeService.sauvegarder(nouveauGrade2);
 		
-		// TODO vérifier qu'il est possible de récupérer le nouveau grade via la méthode lister
 		List<Grade> liste = this.gradeService.lister();
+		assertTrue(liste.stream().anyMatch(g -> g.getId()>0));
 		
-		// TODO modifier un grade
 		this.gradeService.mettreAJour(gradeToModif);
 		
 		List<Grade> liste2 = this.gradeService.lister();
-		// TODO vérifier que les modifications sont bien prises en compte via la méthode lister
+		assertTrue(liste.stream().anyMatch(g -> g.getId()>0));
 		
 	}
 }
