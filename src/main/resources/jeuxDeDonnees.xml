@@ -7,8 +7,5 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<import resource="classpath:profils-remuneration.xml" />
 	<import resource="classpath:grades.xml" />
 	<import resource="classpath:entreprises.xml" />
-	<import resource="classpath:jdd-config.xml" />
-	<import resource="classpath:app-config.xml" />
-	
 
 </beans>
