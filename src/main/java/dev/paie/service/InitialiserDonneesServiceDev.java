@@ -1,5 +1,9 @@
 package dev.paie.service;
 
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import javax.persistence.EntityManager;
@@ -26,13 +30,17 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 	public void initialiser() {
 		Stream.of(Cotisation.class, Entreprise.class, Grade.class, ProfilRemuneration.class)
 		.forEach(classe -> context.getBeansOfType(classe).forEach((nom, bean) -> em.persist(bean)));
-		//this.remplirPeriode();
+		this.remplirPeriode();
 	}
 
-//	private void remplirPeriode() {
-//		Periode periode = new Periode();
-//		int year = LocalDate.now().getYear();
-//		periode.setDateDebut(dateDebut);
-//	}
+	private void remplirPeriode() {
+		LocalDate aujourdhui= LocalDate.now();
+		IntStream.range(1,13).forEach(mois -> {
+			Periode periode = new Periode();
+			periode.setDateDebut(LocalDate.of(aujourdhui.getYear(), mois, 1));
+			periode.setDateFin(periode.getDateDebut().with(TemporalAdjusters.lastDayOfMonth()));
+			em.persist(periode);
+		});
+	}
 }
 
