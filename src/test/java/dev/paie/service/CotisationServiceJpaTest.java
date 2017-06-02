@@ -21,12 +21,11 @@ public class CotisationServiceJpaTest {
 
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {
-		Cotisation nouvelleCotisation = new Cotisation("100", "1000", new BigDecimal("50"),new BigDecimal("10"));
-		
-		this.cotisationService.sauvegarder(nouvelleCotisation);
+//		Cotisation nouvelleCotisation = new Cotisation("100", "1000", new BigDecimal("50"),new BigDecimal("10"));
+//		
+//		this.cotisationService.sauvegarder(nouvelleCotisation);
 		//TODO sauvegarder une nouvelle cotisation
-		List<Cotisation> liste=this.cotisationService.lister();
-		assertTrue(liste!=null);
+		
 		//TODO vérifier qu'il est possible de récupérer la nouvelle cotisation via la méthode lister
 		//TODO modifier une cotisation
 		//TODO vérifier que les modifications sont bien prises en compte via la méthode lister
