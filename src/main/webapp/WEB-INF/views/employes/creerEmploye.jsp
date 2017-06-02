@@ -1,8 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../header.jsp"%>
 
-
-<h1>Créer Employe</h1>
-<p>Préfixe Matricule : ${prefixMatricule}</p>
 <form class="form-horizontal">
 	<fieldset>
 
@@ -25,8 +23,9 @@
 			<div class="col-md-4">
 				<select id="selectEntreprise" name="selectEntreprise"
 					class="form-control">
-					<option value="1">Option one</option>
-					<option value="2">Option two</option>
+					<c:forEach items="${listeEntreprises}" var="entreprise">					
+						<option>${entreprise.denomination}</option>
+					</c:forEach>
 				</select>
 			</div>
 		</div>
@@ -36,8 +35,9 @@
 			<label class="col-md-4 control-label" for="selectProfil">Profil</label>
 			<div class="col-md-4">
 				<select id="selectProfil" name="selectProfil" class="form-control">
-					<option value="1">Option one</option>
-					<option value="2">Option two</option>
+					<c:forEach items="${listeProfil}" var="profil">					
+						<option>${profil.code}</option>
+					</c:forEach>
 				</select>
 			</div>
 		</div>
