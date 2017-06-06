@@ -32,7 +32,7 @@ public class BulletinEmployeController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletin/creerBulletin");
 		mv.addObject("listeBulletin",listeBulletin);
-		mv.addObject("listePeriode",listePeriode);
+mv.addObject("listePeriode",listePeriode);
 		return mv;
 	}
 	
