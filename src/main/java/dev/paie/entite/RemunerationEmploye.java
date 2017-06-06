@@ -1,5 +1,9 @@
 package dev.paie.entite;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
@@ -21,6 +25,7 @@ public class RemunerationEmploye {
 	private Integer id;
 	@Column(name = "matricule")
 	private String matricule;
+	private String dateCreation;
 	@ManyToOne
 	private Entreprise entreprise;
 	@ManyToOne
@@ -37,7 +42,12 @@ public class RemunerationEmploye {
 	public RemunerationEmploye(String matricule, Entreprise entreprise, ProfilRemuneration profilRemuneration,
 			Grade grade) {
 		super();
+
+		LocalDateTime localDate = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+		
 		this.matricule = matricule;
+		this.setDateCreation(localDate.format(formatter).toString());
 		this.entreprise = entreprise;
 		this.profilRemuneration = profilRemuneration;
 		this.grade = grade;
@@ -84,6 +94,14 @@ public class RemunerationEmploye {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getDateCreation() {
+		return dateCreation;
+	}
+
+	public void setDateCreation(String dateCreation) {
+		this.dateCreation = dateCreation;
 	}
 
 }

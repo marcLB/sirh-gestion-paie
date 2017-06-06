@@ -1,11 +1,16 @@
 package dev.paie.web.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Formatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.paie.entite.Entreprise;
@@ -45,10 +50,27 @@ public class RemunerationEmployeController {
 		List<RemunerationEmploye> listeRemunerationEmploye= remunEmplRepo.findAll();
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("employes/listerEmploye");
-		mv.addObject("listeRemEmpl",listeRemunerationEmploye);
+		mv.addObject("listeEmpl",listeRemunerationEmploye);
 		return mv;
 	}
 	
-	
+	@RequestMapping(value="/creer",method=RequestMethod.POST)
+	public String form (
+			@RequestParam("matricule") String matricule,
+			@RequestParam("grade") Integer gradeId,
+			@RequestParam("entreprise") Integer entrepriseId,
+			@RequestParam("profil") Integer profilId,
+			Model model) {
+		RemunerationEmploye re = new RemunerationEmploye(
+				matricule,
+				entrepriseRepo.findOne(entrepriseId),
+				profilRepo.findOne(profilId),
+				gradeRepo.findOne(gradeId));
+		
+		remunEmplRepo.saveAndFlush(re);
+		model.addAttribute("StatusMessageKey","person.form.msg.sucess");
+		
+		return "redirect:/mvc/employes/lister";
+	}
 	
 }

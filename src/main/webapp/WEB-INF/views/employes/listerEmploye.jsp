@@ -18,13 +18,14 @@
       </tr>
     </thead>
     <tbody>
-	    <c:forEach items="${listeRemEmpl}" var="liste">					
-			<tr>
+	    <c:forEach items="${listeEmpl}" var="liste">					
+			<tr class="text-center">
+				<td>${liste.dateCreation}</td>
 				<td>${liste.matricule}</td>
-				<td>${liste.matricule}</td>
-				<td>${liste.matricule}</td>
-				<td>${liste.matricule}</td>
-				<td>${liste.matricule}</td>
+				<td>${liste.grade.code}</td>
+				<td>xxx</td>
+				<td>xxx</td>
+				<td>xxx</td>
 				<td> <a href="visualiser">Visualiser</a></td>
 			</tr>
 		</c:forEach>

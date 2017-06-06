@@ -28,6 +28,16 @@ public class BulletinSalaire {
 	@Column(name="primeExceptionnelle")
 	private BigDecimal primeExceptionnelle;
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//GETTERS AND SETTERS
 	public RemunerationEmploye getRemunerationEmploye() {
 		return remunerationEmploye;
 	}
