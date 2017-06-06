@@ -7,7 +7,9 @@
 </head>
 <body>
 <header>
-
-
-
+<ul class="nav nav-tabs">
+  <li><a href="creer">Employés</a></li>
+  <li><a href="lister">Lister</a></li>
+  <li><a href="bulletins">Bulletins</a></li>
+</ul>
 </header>

@@ -19,6 +19,7 @@ import dev.paie.entite.Entreprise;
 import dev.paie.entite.Grade;
 import dev.paie.entite.Periode;
 import dev.paie.entite.ProfilRemuneration;
+import dev.paie.entite.RemunerationEmploye;
 
 @Service
 public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
@@ -28,7 +29,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 	@Override
 	@Transactional 
 	public void initialiser() {
-		Stream.of(Cotisation.class, Entreprise.class, Grade.class, ProfilRemuneration.class)
+		Stream.of(Cotisation.class, Entreprise.class, Grade.class, ProfilRemuneration.class, RemunerationEmploye.class)
 		.forEach(classe -> context.getBeansOfType(classe).forEach((nom, bean) -> em.persist(bean)));
 		this.remplirPeriode();
 	}
@@ -42,4 +43,6 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 			em.persist(periode);
 		});
 	}
+	
+	
 }
